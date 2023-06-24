@@ -53,7 +53,7 @@ router.post("/contact-form/send", async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     const emailOptions = {
-      from: "safolah.karimi@hicoder.ch",
+      from: "safolah.karimi@hicoders.ch",
       to: email,
       subject: subject,
       html: `
