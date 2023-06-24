@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  mysql-dreamshop24:
+    container_name: mysql-dreamshop24
+    image: mysql
+    ports:
+      - 13306:3306
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=dreamshop24_art
+      - MYSQL_PASSWORD=dreamshop24_art
+      - MYSQL_USER=dreamshop_art
+      - MYSQL_DATABASE=dreamshop24
+    volumes:
+      - ./mysqlDB:/var/lib/meinsql/data
+  phpmyadmin-dreamshop24:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-dreamshop24
+    depends_on:
+      - mysql-dreamshop24
+    environment:
+      PMA_HOST: mysql-dreamshop24
+    restart: always
+    ports:
+      - 19090:80
